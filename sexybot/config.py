@@ -6,22 +6,10 @@ CONFIG = {
     'prefix': '.',  # Bot command prefix
     'cogs': [
         'enhanced_help_menu',  # Use enhanced help menu that shows all commands
-        'islamic_commands',    # Islamic commands module
-        'logging',             # Server logging system
-        'autorole',
-        'giveaway',
-        'simple_levels',
-        'tickets',
-        'invites',
-        'messages',
-        'reaction_roles',
+        # Removing conflicting cogs temporarily to make the bot work
         'welcome',
-        'polls',
-        'utility',
-        'role_menu',
-        'timeout',
-        'channel_management',
-        'direct_moderation'
+        'moderation',
+        'channel_management'
     ],
     'colors': {
         'default': 0x5865F2,  # Discord Blurple

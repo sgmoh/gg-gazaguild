@@ -11,13 +11,30 @@ logger = logging.getLogger('discord_bot')
 
 class TicketButton(discord.ui.Button):
     """Button for creating tickets"""
-        if option.lower() == "setup":
-            # Create ticket embed and button
-            embed = discord.Embed(
-                title="Support Tickets",
-                description="Need help? Click the button below to create a support ticket!",
-                color=CONFIG['colors']['default']
+    def __init__(self, label="Create Ticket", emoji="🎫"):
+        super().__init__(
+            label=label,
+            emoji=emoji,
+            style=discord.ButtonStyle.primary,
+            custom_id="create_ticket"
+        )
+    
+    async def callback(self, interaction):
+        """Handle button click to create a ticket"""
+        guild = interaction.guild
+        member = interaction.user
+        
+        # Check if user already has an open ticket
+        # This assumes tickets are channels with a naming pattern 'ticket-{user_id}'
+        ticket_name = f"ticket-{member.id}"
+        existing_ticket = discord.utils.get(guild.text_channels, name=ticket_name)
+        
+        if existing_ticket:
+            await interaction.response.send_message(
+                f"You already have an open ticket: {existing_ticket.mention}",
+                ephemeral=True
             )
+            return
             
             # Try to use ticket GIF if available
             try:

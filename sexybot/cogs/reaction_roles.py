@@ -11,53 +11,73 @@ logger = logging.getLogger('discord_bot')
 
 class RoleSelect(discord.ui.Select):
     """Dropdown for selecting roles"""
-        try:
-            # Check if message exists in the database
-            reaction_roles = db.data.get('reaction_roles', {}).get(str(ctx.guild.id), {}).get(message_id)
+    def __init__(self, roles):
+        options = []
+        self.roles = roles
+        
+        for role_id, label in roles.items():
+            options.append(discord.SelectOption(label=label, value=role_id))
             
-            if not reaction_roles:
-                embed = EmbedCreator.create_error_embed(
-                    "Not Found",
-                    "Could not find a reaction role message with that ID."
-                )
-                await ctx.send(embed=embed)
-                return
+        super().__init__(placeholder="Select a role...", min_values=1, max_values=1, options=options)
+    
+    async def callback(self, interaction):
+        """Handle role selection"""
+        role_id = self.values[0]
+        role = interaction.guild.get_role(int(role_id))
+        
+        if not role:
+            await interaction.response.send_message("Role not found. It may have been deleted.", ephemeral=True)
+            return
             
-            # Try to delete the message
-            try:
-                for channel in ctx.guild.text_channels:
-                    try:
-                        message = await channel.fetch_message(int(message_id))
-                        await message.delete()
-                        break
-                    except (discord.NotFound, discord.Forbidden, discord.HTTPException):
-                        continue
-            except Exception as e:
-                logger.error(f"Error deleting message: {e}")
-                await ctx.send("Could not delete the message, but will remove it from the database.")
-            
-            # Remove from database
-            if str(ctx.guild.id) in db.data.get('reaction_roles', {}) and message_id in db.data['reaction_roles'][str(ctx.guild.id)]:
-                del db.data['reaction_roles'][str(ctx.guild.id)][message_id]
-                db._save_data()
-            
-            embed = EmbedCreator.create_success_embed(
-                "Deleted",
-                "Reaction role message has been deleted."
-            )
-            await ctx.send(embed=embed)
-            
-        except Exception as e:
-            logger.error(f"Error in reaction role delete: {e}")
-            embed = EmbedCreator.create_error_embed(
-                "Error",
-                f"An error occurred: {e}"
-            )
-            await ctx.send(embed=embed)
+        member = interaction.user
+        
+        if role in member.roles:
+            await member.remove_roles(role)
+            await interaction.response.send_message(f"Removed the {role.name} role.", ephemeral=True)
+        else:
+            await member.add_roles(role)
+            await interaction.response.send_message(f"Added the {role.name} role.", ephemeral=True)
+    
+class ReactionRoles(commands.Cog):
+    """Reaction role system for self-assignable roles"""
+    
+    def __init__(self, bot):
+        self.bot = bot
+        logger.info("ReactionRoles cog initialized")
+        
+    @commands.group(name="reactionrole", aliases=["rr"], invoke_without_command=True)
+    @commands.has_permissions(manage_roles=True)
+    async def reactionrole(self, ctx):
+        """Manage reaction roles for the server"""
+        embed = discord.Embed(
+            title="Reaction Roles",
+            description="Use the subcommands below to manage reaction roles:",
+            color=CONFIG['colors']['default']
+        )
+        
+        embed.add_field(
+            name=f"`{CONFIG['prefix']}reactionrole create`",
+            value="Create a new reaction role message",
+            inline=False
+        )
+        
+        embed.add_field(
+            name=f"`{CONFIG['prefix']}reactionrole delete <message_id>`",
+            value="Delete a reaction role message",
+            inline=False
+        )
+        
+        embed.add_field(
+            name=f"`{CONFIG['prefix']}reactionrole list`",
+            value="List all reaction role messages",
+            inline=False
+        )
+        
+        await ctx.send(embed=embed)
     
     @reactionrole.command(name="list", description="List all reaction role messages")
     @commands.has_permissions(manage_roles=True)
-    async def list(self, ctx):
+    async def list_roles(self, ctx):
         """List all reaction role messages in the server"""
         reaction_roles = db.data.get('reaction_roles', {}).get(str(ctx.guild.id), {})
         

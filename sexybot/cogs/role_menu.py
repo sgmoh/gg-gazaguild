@@ -13,11 +13,29 @@ import asyncio
 
 class RoleDropdown(ui.Select):
     """Dropdown menu for role selection"""
-        # Determine the target channel
-        target_channel = channel or ctx.channel
+    def __init__(self, role_options):
+        options = []
+        self.role_map = {}
         
-        # Check bot permissions in the target channel
-        if not target_channel.permissions_for(ctx.guild.me).send_messages:
+        for role_id, role_name in role_options.items():
+            options.append(SelectOption(label=role_name, value=role_id))
+            self.role_map[role_id] = role_name
+            
+        super().__init__(
+            placeholder="Choose a role...",
+            min_values=1,
+            max_values=1,
+            options=options
+        )
+    
+    async def callback(self, interaction):
+        """Handle role selection"""
+        role_id = self.values[0]
+        role = interaction.guild.get_role(int(role_id))
+        
+        if not role:
+            await interaction.response.send_message("That role no longer exists.", ephemeral=True)
+            return
             await ctx.send(embed=EmbedCreator.create_error_embed(
                 "Missing Permissions",
                 f"I don't have permission to send messages in {target_channel.mention}."
