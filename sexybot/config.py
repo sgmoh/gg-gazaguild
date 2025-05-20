@@ -1,5 +1,7 @@
 # Bot configuration settings
 
+PREFIX = '.'  # Define the prefix that bot.py is looking for
+
 CONFIG = {
     'prefix': '.',  # Bot command prefix
     'cogs': [

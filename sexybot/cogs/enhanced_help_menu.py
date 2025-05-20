@@ -380,58 +380,58 @@ class EnhancedHelpMenu(commands.Cog):
         # Command-specific emojis
         command_emojis = {
             # General
-            "help": "<:help:1373370856239267940>",
-            "ping": "<:Prefix:1373605377609957426>",
-            "info": "<:help:1373370856239267940>",
+            "help": "❓",
+            "ping": "🏓",
+            "info": "ℹ️",
             
             # Moderation
-            "kick": "<:kick:1373370930440569073>",
-            "ban": "<:banned:1373370889235726407>",
-            "warn": "<:Warn:1373605418315677807>",
-            "clear": "<:clear:1373370955279110245>",
-            "purge": "<:clear:1373370955279110245>",
-            "timeout": "<:timeout:1373371114155413504>",
-            "untimeout": "<:timeout:1373371114155413504>",
-            "timeoutinfo": "<:timeout:1373371114155413504>",
-            "lock": "<:Multipurpose:1373371000271409416>",
-            "unlock": "<:Multipurpose:1373371000271409416>",
-            "slowmode": "<:mute:1373372051024248832>",
+            "kick": "👢",
+            "ban": "🔨",
+            "warn": "⚠️",
+            "clear": "🧹",
+            "purge": "🧹",
+            "timeout": "⏳",
+            "untimeout": "⏳",
+            "timeoutinfo": "⏳",
+            "lock": "🔒",
+            "unlock": "🔓",
+            "slowmode": "🐢",
             
             # Levels
-            "level": "<:Clipboard:1373605336820220097>",
-            "leaderboard": "<:Clipboard:1373605336820220097>",
+            "level": "📈",
+            "leaderboard": "🏆",
             
             # Invites
-            "invites": "<:Join:1373605236354056346>",
+            "invites": "📨",
             
             # Messages
-            "messages": "<:Logs:1373372085866598550>",
-            "topmessages": "<:Logs:1373372085866598550>",
-            "resetmessages": "<:Logs:1373372085866598550>",
+            "messages": "💬",
+            "topmessages": "💬",
+            "resetmessages": "🗑️",
             
             # Giveaways
-            "gstart": "<:giveaway:1373607514112790610>",
-            "gend": "<:giveaway:1373607514112790610>",
-            "greroll": "<:giveaway:1373607514112790610>",
+            "gstart": "🎉",
+            "gend": "🎉",
+            "greroll": "🎲",
             
             # Roles
-            "reactionrole": "<:ReactionRole:1373607898730725469>",
-            "rolemenu": "<:ReactionRole:1373607898730725469>",
+            "reactionrole": "👑",
+            "rolemenu": "📋",
             
             # Welcome
-            "welcome": "<:joinleave:1373607445439709225>",
-            "setwelcome": "<:joinleave:1373607445439709225>",
+            "welcome": "👋",
+            "setwelcome": "👋",
             
             # Tickets
-            "ticket": "<:ticket:1373371061340606594>",
-            "close": "<:ticket:1373371061340606594>",
+            "ticket": "🎫",
+            "close": "🔒",
             
             # Polls
-            "poll": "<:Clipboard:1373605336820220097>",
+            "poll": "📊",
             
             # Logging
-            "logs": "<:Logs:1373372085866598550>",
-            "log": "<:Logs:1373372085866598550>"
+            "logs": "📝",
+            "log": "📝"
         }
         
         # Get emoji for this command
