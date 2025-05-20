@@ -10,52 +10,52 @@ logger = logging.getLogger('discord_bot')
 COMMAND_CATEGORIES = {
     "general": {
         "name": "General",
-        "emoji": "<:help:1373370856239267940>",
+        "emoji": "🔧",
         "description": "General bot commands"
     },
     "moderation": {
         "name": "Moderation",
-        "emoji": "<:Multipurpose:1373371000271409416>",
+        "emoji": "⚒️",
         "description": "Server moderation commands"
     },
     "levels": {
         "name": "Levels",
-        "emoji": "<:Clipboard:1373605336820220097>",
+        "emoji": "📈",
         "description": "Level tracking and rewards"
     },
     "invites": {
         "name": "Invites",
-        "emoji": "<:Join:1373605236354056346>",
+        "emoji": "📨",
         "description": "Invite tracking and statistics"
     },
     "messages": {
         "name": "Messages",
-        "emoji": "<:Logs:1373372085866598550>",
+        "emoji": "💬",
         "description": "Message tracking and leaderboards"
     },
     "giveaways": {
         "name": "Giveaways",
-        "emoji": "<:giveaway:1373607514112790610>",
+        "emoji": "🎉",
         "description": "Create and manage giveaways"
     },
     "roles": {
         "name": "Roles",
-        "emoji": "<:ReactionRole:1373607898730725469>",
+        "emoji": "👑",
         "description": "Self-assignable reaction roles"
     },
     "welcome": {
         "name": "Welcome",
-        "emoji": "<:joinleave:1373607445439709225>",
+        "emoji": "👋",
         "description": "Welcome messages for new members"
     },
     "tickets": {
         "name": "Tickets",
-        "emoji": "<:ticket:1373371061340606594>",
+        "emoji": "🎫",
         "description": "Support ticket system"
     },
     "polls": {
         "name": "Polls",
-        "emoji": "<:Clipboard:1373605336820220097>",
+        "emoji": "📊",
         "description": "Create and manage polls"
     },
     "islamic": {
@@ -65,7 +65,7 @@ COMMAND_CATEGORIES = {
     },
     "logging": {
         "name": "Logging",
-        "emoji": "<:Logs:1373372085866598550>",
+        "emoji": "📝",
         "description": "Server logging system"
     }
 }
@@ -202,58 +202,58 @@ class CategorySelect(discord.ui.Select):
             # Command-specific emojis
             command_emojis = {
                 # General
-                "help": "<:help:1373370856239267940>",
-                "ping": "<:Prefix:1373605377609957426>",
-                "info": "<:help:1373370856239267940>",
+                "help": "❓",
+                "ping": "🏓",
+                "info": "ℹ️",
                 
                 # Moderation
-                "kick": "<:kick:1373370930440569073>",
-                "ban": "<:banned:1373370889235726407>",
-                "warn": "<:Warn:1373605418315677807>",
-                "clear": "<:clear:1373370955279110245>",
-                "purge": "<:clear:1373370955279110245>",
-                "timeout": "<:timeout:1373371114155413504>",
-                "untimeout": "<:timeout:1373371114155413504>",
-                "timeoutinfo": "<:timeout:1373371114155413504>",
-                "lock": "<:Multipurpose:1373371000271409416>",
-                "unlock": "<:Multipurpose:1373371000271409416>",
-                "slowmode": "<:mute:1373372051024248832>",
+                "kick": "👢",
+                "ban": "🔨",
+                "warn": "⚠️",
+                "clear": "🧹",
+                "purge": "🧹",
+                "timeout": "⏳",
+                "untimeout": "⏳",
+                "timeoutinfo": "⏳",
+                "lock": "🔒",
+                "unlock": "🔓",
+                "slowmode": "🐢",
                 
                 # Levels
-                "level": "<:Clipboard:1373605336820220097>",
-                "leaderboard": "<:Clipboard:1373605336820220097>",
+                "level": "📈",
+                "leaderboard": "🏆",
                 
                 # Invites
-                "invites": "<:Join:1373605236354056346>",
+                "invites": "📨",
                 
                 # Messages
-                "messages": "<:Logs:1373372085866598550>",
-                "topmessages": "<:Logs:1373372085866598550>",
-                "resetmessages": "<:Logs:1373372085866598550>",
+                "messages": "💬",
+                "topmessages": "💬",
+                "resetmessages": "🗑️",
                 
                 # Giveaways
-                "gstart": "<:giveaway:1373607514112790610>",
-                "gend": "<:giveaway:1373607514112790610>",
-                "greroll": "<:giveaway:1373607514112790610>",
+                "gstart": "🎉",
+                "gend": "🎉",
+                "greroll": "🎲",
                 
                 # Roles
-                "reactionrole": "<:ReactionRole:1373607898730725469>",
-                "rolemenu": "<:ReactionRole:1373607898730725469>",
+                "reactionrole": "👑",
+                "rolemenu": "📋",
                 
                 # Welcome
-                "welcome": "<:joinleave:1373607445439709225>",
-                "setwelcome": "<:joinleave:1373607445439709225>",
+                "welcome": "👋",
+                "setwelcome": "👋",
                 
                 # Tickets
-                "ticket": "<:ticket:1373371061340606594>",
-                "close": "<:ticket:1373371061340606594>",
+                "ticket": "🎫",
+                "close": "🔒",
                 
                 # Polls
-                "poll": "<:Clipboard:1373605336820220097>",
+                "poll": "📊",
                 
                 # Logging
-                "logs": "<:Logs:1373372085866598550>",
-                "log": "<:Logs:1373372085866598550>"
+                "logs": "📝",
+                "log": "📝"
             }
             
             for cmd in sorted(commands_in_category, key=lambda x: x.name):
