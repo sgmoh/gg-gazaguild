@@ -2,14 +2,11 @@ services:
   - type: web
     name: discord-bot
     env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: python run_fixed_bot.py
+    buildCommand: pip install -r sexybot/requirements.txt
+    startCommand: python sexybot/run_fixed_bot.py
+    healthCheckPath: /health
     envVars:
       - key: DISCORD_TOKEN
         sync: false
-      - key: DATABASE_URL
-        sync: false
-      - key: USE_POSTGRES
-        value: true
-    healthCheckPath: /health
-    port: 8080
+      - key: PYTHON_VERSION
+        value: 3.11.11
