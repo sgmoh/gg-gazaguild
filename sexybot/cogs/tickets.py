@@ -140,5 +140,18 @@ class TicketButton(discord.ui.Button):
         except discord.HTTPException as e:
             logger.error(f"Error deleting ticket channel: {e}")
 
+class Tickets(commands.Cog):
+    """Ticket system for support"""
+    
+    def __init__(self, bot):
+        self.bot = bot
+        logger.info("Tickets cog initialized")
+        
+    @commands.command(name="ticket", help="Create a support ticket")
+    async def ticket(self, ctx):
+        """Create a support ticket"""
+        # Implementation will go here
+        await ctx.send("This command is under development. Please try again later.")
+
 async def setup(bot):
     await bot.add_cog(Tickets(bot))

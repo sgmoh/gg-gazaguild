@@ -75,7 +75,7 @@ class ReactionRoles(commands.Cog):
         
         await ctx.send(embed=embed)
     
-    @reactionrole.command(name="list", description="List all reaction role messages")
+    @commands.command(name="listreactionroles", description="List all reaction role messages")
     @commands.has_permissions(manage_roles=True)
     async def list_roles(self, ctx):
         """List all reaction role messages in the server"""
