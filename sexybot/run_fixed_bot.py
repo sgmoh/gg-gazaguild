@@ -17,6 +17,13 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 # Load environment variables
 load_dotenv()
 
+# Import the uptime monitoring for Render compatibility
+from uptime_monitor import run_uptime_monitor, start_stats_updater
+
+# Initialize the uptime monitor for UptimeRobot
+run_uptime_monitor()
+start_stats_updater()
+
 # Import the bot initialization function
 from bot import initialize_bot
 

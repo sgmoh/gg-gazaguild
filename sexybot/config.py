@@ -12,11 +12,11 @@ CONFIG = {
         'channel_management'
     ],
     'colors': {
-        'default': 0x5865F2,  # Discord Blurple
-        'success': 0x57F287,  # Green
+        'default': 0xED4245,  # Red (changed from Discord Blurple)
+        'success': 0xED4245,  # Red (changed from Green)
         'error': 0xED4245,    # Red
-        'warning': 0xFEE75C,  # Yellow
-        'info': 0x3498DB      # Blue
+        'warning': 0xED4245,  # Red (changed from Yellow)
+        'info': 0xED4245      # Red (changed from Blue)
     },
     'emojis': {
         'success': '✅',
